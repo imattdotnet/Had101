@@ -53,7 +53,7 @@ There is a saying in Big Data:
 
 MapReduce is a programming model supported by Hadoop. The programming model allows us to process massive data sets in parallel. Hadoop supports the orchestration of a MapReduce program where the program containing the MapReduce job (containing something we'll learn to know under the name _**Mappers**_ and **_Reducers_**) as well as some orchestration of what order to run the mappers and reducers.
 
-![Map Reduce](../Images/Map_Reduce.png)
+![Map Reduce](/Images/Map_Reduce.png)
 
 The algorithm works as follows:
 
