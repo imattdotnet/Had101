@@ -1,14 +1,62 @@
-Essential HDFS Commands
+## Introduction
+
+First of all, let's take a look at what HDFS looks like to you as a developer. If you have experience with the Linux file system, you should be in good shape. If you have spent most of your life behind a file browser and are used to dragging and dropping files around, you will now get a chance to move files around the way professional developers do it - the command line.
+
+At the absolute core (later we'll see that there are various web-based tools that can help you make this task a little easier), HDFS has a client tool that allows us to access the files from the command line.
+
+You can move files from your local file system into the HDFS and out of the HDFS back into your local file system.
+
+For example, let's say I had a file called _MyLocalBigDataFile.csv_  that I wanted to copy the file into some directory in HDFS called _mydirectoryinhdfs._ I would have to issue the following command
+
+$ hdfs dfs -put MyLocalBigDataFile.csv /mydirectoryinhdfs
+
+If I wanted to copy a another file called MyHDFSFile.txt into my local tmp directory, I may issue a command like this:
+
+$ hdfs dfs -get /mydirectoryinhdfs/MyHDFSFile.txt /tmp
+
+Notice that the pattern (using CAPITAL LETTERS FOR WHAT WOULD CHANGE.
+
+$ hdsf fs -COMMAND PARMS
+
+* **Instructions:**
+
+Reading, copying, moving files inside HDFS
+
+Reading, copying, moving files inside HDFS
+You can manipulate and read the files inside HDFS. E.g., say you want to display the contents of a file. In Linux, you would have written the following command:
+`$ cat FILENAME`
+
+HDFS follows the same naming convention as Linux, but using the pattern _hdfs dfs -COMMAND_ instead. So, in HDFS, this command would look like this:
+`$ hdfs dfs -cat FILENAME`
+
+E.g., say I want to move a file called MyFile.txt that is currently in a tmp directory to another directory called /projects/myproject, we would have to issue the command:
+`$ hdfs dfs -mv /tmp/MyFile.txt /projects/myproject`
+
+Similarly you can use commands such as:
+
+-   cp -- Copy
+-   chmod -- Change the permissions of files
+-   du -- Displays sizes of files and directories
+-   mkdir -- Create directory(ies)
+-   rm -- Deletes file(s)
+-   tail -- Read the end of the file
+
+
+# Essential HDFS Commands
+
 This lab serves as a quick hands-on guide to the most useful HDFS commands for managing HDFS files from the command line.
 
-Introduction
-The Hadoop File System is a distributed file system that is the heart of the storage for Hadoop. There are many ways to interact with HDFS including Hue, Ambari, HDFS Web UI, WebHDFS and the command line. The first way most people interact with HDFS is via the command line tool called hdfs. This is a runner that runs other commands including dfs. This replaces the old Hadoop fs in the newer Hadoop. The HDFS client can be installed on Linux, Windows, and Macintosh and be utilized to access your remote or local Hadoop clusters.
+## Introduction
+
+The Hadoop File System is a distributed file system that is the heart of the storage for Hadoop. There are many ways to interact with HDFS including Hue, Ambari, HDFS Web UI, WebHDFS and the command line. The first way most people interact with HDFS is via the command line tool called `hdfs`. This is a runner that runs other commands including `dfs`. This replaces the old Hadoop `fs` in the newer Hadoop. The HDFS client can be installed on Linux, Windows, and Macintosh and be utilized to access your remote or local Hadoop clusters.
 
 The one universal and fastest way to check things is with the shell or CLI. The following are always helpful and usually hard or slower to do in a graphical interface. Try them out as they are described on your own Hadoop installation.
 
-To List All the Files in the HDFS Root Directory
+## To List All the Files in the HDFS Root Directory
+
 The most basic command is to get a list of directories from the root. This gives you the lay of the land.
 
+```
 Usage: hdfs dfs [generic options] -ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [<path> ...]
 Example:
 hdfs dfs -ls /
@@ -18,14 +66,19 @@ drwxrwxrwx   - hdfs   hdfs            0 2016-11-04 11:56 /apps
 drwxr-xr-x   - yarn   hadoop          0 2016-09-15 21:02 /ats
 drwxrwxrwx   - hdfs   hdfs            0 2016-10-05 21:07 /banking
 ...
-You can choose any path from the root down, just like regular Linux file system. -h shows in human readable sizes, recommended. -R is another great one to drill into subdirectories. Often you won't realize how many files and directories you actually have in HDFS. Many tools including Hive, Spark history and BI tools will create directories and files as logs or for indexing.
+```
 
-Copying Files
+You can choose any path from the root down, just like regular Linux file system. `-h` shows in human readable sizes, recommended. `-R` is another great one to drill into subdirectories. Often you won't realize how many files and directories you actually have in HDFS. Many tools including Hive, Spark history and BI tools will create directories and files as logs or for indexing.
+
+## Copying Files
+
 There are a few different ways to copy files:
 
-copyFromLocal - Copy the file from Local file system to HDFS
-copyToLocal - Copy the file from HDFS to Local File System
-put - Copy single source, or multiple sources from local file system to the destination file system
+-   `copyFromLocal` - Copy the file from Local file system to HDFS
+-   `copyToLocal` - Copy the file from HDFS to Local File System
+-   `put` - Copy single source, or multiple sources from local file system to the destination file system
+
+```
 Usage: hdfs dfs -copyFromLocal <localsrc> <hdfs destination>
 Command: hdfs dfs –copyFromLocal /home/user/test /new_user
 
@@ -34,38 +87,62 @@ Command: hdfs dfs –copyToLocal /new_user/test /home/user
 
 Usage: hdfs dfs -put <localsrc> <destination>
 Command: hdfs dfs –put /home/user/test /user
-Create an Empty File in an HDFS Directory
+```
+
+## Create an Empty File in an HDFS Directory
+
+```
 Usage: hadoop fs [generic options] -touchz <path> ...
 Example:
 hdfs dfs -touchz /test2/file1.txt
-This works the same as Linux touch command. This is useful to initialize a file. Sometimes you want to test a user's permissions and want to quickly do a write. This is the quickest path for you. You can also bulk upload a chunk of files via: hdfs dfs -put *.txt /test1/. The reason I want to do this so I can show you a very interesting command called getmerge.
+```
 
-Concatenate all the Files into a Directory into a Single File
+This works the same as Linux `touch` command. This is useful to initialize a file. Sometimes you want to test a user's permissions and want to quickly do a write. This is the quickest path for you. You can also bulk upload a chunk of files via: `hdfs dfs -put *.txt /test1/`. The reason I want to do this so I can show you a very interesting command called `getmerge`.
+
+## Concatenate all the Files into a Directory into a Single File
+
+```
 Usage:  hdfs dfs [generic options] -getmerge [-nl] <src> <localdst>
 Example:
 hdfs dfs -getmerge -nl /test1 file1.txt
-This will create a new file on your local directory that contains all the files from a directory and concatenates all them together. The -nl option adds newlines between files. This is often nice when you wish to consolidate a lot of small files into an extract for another system. This is quick and easy and doesn't require using a tool like Apache Flume or Apache NiFi. Of course, for regular production jobs and for larger and greater number of files you will want a more powerful tool like the two mentioned. For a quick extract that someone wants to see in Excel, concatenating a few dozen CSVs from a directory into one file is helpful.
+```
 
-Change the Permissions of a /new-dir
+This will create a new file on your local directory that contains all the files from a directory and concatenates all them together. The `-nl` option adds newlines between files. This is often nice when you wish to consolidate a lot of small files into an extract for another system. This is quick and easy and doesn't require using a tool like Apache Flume or Apache NiFi. Of course, for regular production jobs and for larger and greater number of files you will want a more powerful tool like the two mentioned. For a quick extract that someone wants to see in Excel, concatenating a few dozen CSVs from a directory into one file is helpful.
+
+## Change the Permissions of a /new-dir
+
+```
 Usage: hdfs dfs [generic options] -chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...
 Example:
 hdfs dfs -chmod -R 777 /new-dir
+```
+
 The chmod patterns follow the standard Linux patterns, where 777 gives every user read-write-execute for user-group-other.
 
-Change the Owner and Group of a New Directory: /new-dir
+## Change the Owner and Group of a New Directory: /new-dir
+
+```
 Usage: hdfs dfs [generic options] -chown [-R] [OWNER][:[GROUP]] PATH...
 Example:
 hdfs dfs -chown -R admin:hadoop /new-dir
-Change the ownership of a directory to the admin user and the Hadoop group. You must have permissions to give this to that user and that group. Also, the user and group must exist. For changing permissions, it is best to sudo to the hdfs user which is the root user for HDFS. Linux root user is not the root owner of the HDFS file system.
+```
 
-Delete all the ORC files forever, skipping the temporary trash holding
+Change the ownership of a directory to the admin user and the Hadoop group. You must have permissions to give this to that user and that group. Also, the user and group must exist. For changing permissions, it is best to sudo to the **hdfs** user which is the **root** user for HDFS. Linux **root** user is not the root owner of the HDFS file system.
+
+## Delete all the ORC files forever, skipping the temporary trash holding
+
+```
 Usage:  hdfs dfs [generic options] -rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...
 Example:
 hdfs dfs -rm -R -f -skipTrash /dir/*.orc
 Deleted /dir/a.orc
-We want to skipTrash to destroy that file immediately and free up our space, otherwise, it will go to a trash directory and wait for a configured period of time before it was deleted. You use -f to force the deletion.
+```
 
-Move A Directory From Local To HDFS and Delete Local
+We want to **skipTrash** to destroy that file immediately and free up our space, otherwise, it will go to a trash directory and wait for a configured period of time before it was deleted. You use `-f` to force the deletion.
+
+##Move A Directory From Local To HDFS and Delete Local
+
+```
 Usage: hdfs dfs [generic options] -moveFromLocal <localsrc> ... <dst>
 Example:
 hdfs dfs -moveFromLocal /tmp/tmp2 /tmp2
@@ -75,18 +152,26 @@ Found 2 items
 -rw-r--r--   3 hdfs hdfs          5 2016-11-18 15:55 /tmp2/b.txt
 [hdfs@tspanndev10 /]$ ls -lt /tmp/tmp2
 ls: cannot access /tmp/tmp2: No such file or directory
-If you want to move a local directory up to HDFS and remove the local copy, the command is moveFromLocal.
+```
 
-Show Disk Usage in Megabytes for the Directory: /dir
+If you want to move a local directory up to HDFS and remove the local copy, the command is **moveFromLocal**.
+
+## Show Disk Usage in Megabytes for the Directory: /dir
+
+```
 Usage: hdfs dfs [generic options] -du [-s] [-h] <path> ...
 Example:
 hdfs dfs -du -s -h /dir
 2.1 G  /dir
-The -h flag gives you a human readable output of size, for example Gigabytes.
+```
 
-Getting Help
-When in doubt of what command you want to use or what to do next, just type help. You will also get a detailed list for each individual command.
+The `-h` flag gives you a human readable output of size, for example Gigabytes.
 
+## Getting Help
+
+When in doubt of what command you want to use or what to do next, just type **help**. You will also get a detailed list for each individual command.
+
+```
 hdfs dfs -help
 Usage: hadoop fs [generic options]
 [-appendToFile <localsrc> ... <dst>]
@@ -130,11 +215,15 @@ Usage: hadoop fs [generic options]
 [-truncate [-w] <length> <path> ...]
 [-usage [cmd ...]]
 ...
-You can also use the older format of: hadoop fs. This will work on older Hadoop installations as well.
+```
 
-HDFS DFS Administration
-If you are logged in as the hdfs super user, you can also use the HDFS Admin commands.
+You can also use the older format of: **hadoop fs**. This will work on older Hadoop installations as well.
 
+## HDFS DFS Administration
+
+If you are logged in as the `hdfs` super user, you can also use the HDFS Admin commands.
+
+```
 Usage: hdfs dfsadmin
 Note: Administrative commands can only be run as the HDFS superuser.
 [-report [-live] [-dead] [-decommissioning]]
@@ -177,16 +266,24 @@ Generic options supported are
 -archives <comma separated list of archives>    specify comma separated archives to be unarchived on the compute machines.
 The general command line syntax is
 hdfs command [genericOptions] [commandOptions]
-There are number of commands that you may need to use for administrating your cluster if you are one of the administrators for your cluster. If you are running your own personal cluster or Sandbox, these are also good to know and try. Do Not Try These In Production if you are not the owner and fully understand the dire consequences of these actions. These commands will be affecting the entire Hadoop cluster distributed file system. You can shutdown data nodes, add quotas to directories for various users and other administrative features.
+```
 
-WARNING: Enter Safemode for Your Cluster
+There are number of commands that you may need to use for administrating your cluster if you are one of the administrators for your cluster. If you are running your own personal cluster or Sandbox, these are also good to know and try. **Do Not Try These In Production** if you are not the owner and fully understand the dire consequences of these actions. These commands will be affecting the entire Hadoop cluster distributed file system. You can shutdown data nodes, add quotas to directories for various users and other administrative features.
+
+## **WARNING:** Enter Safemode for Your Cluster
+
+```
 Usage: hdfs dfsadmin [-safemode enter | leave | get | wait | forceExit]
 Example:
 hdfs dfsadmin -safemode enter
 Safe mode is ON
-Do not do this unless you need to do cluster maintenance such as adding nodes. You will be entering read-only mode. You need to do safemode leave to get out of this. These commands may take time as they wait for things to write and jobs not accessing the servers.
+```
 
-To Get a Report of Your Cluster
+Do not do this unless you need to do cluster maintenance such as adding nodes. You will be entering **read-only mode**. You need to do safemode leave to get out of this. These commands may take time as they wait for things to write and jobs not accessing the servers.
+
+## To Get a Report of Your Cluster
+
+```
 Usage: hdfs dfsadmin -report
 Example:
 hdfs dfsadmin -report
@@ -217,3 +314,4 @@ Cache Used%: 100.00%
 Cache Remaining%: 0.00%
 Xceivers: 8
 Last contact: Fri Nov 18 16:28:59 UTC 2016
+```
