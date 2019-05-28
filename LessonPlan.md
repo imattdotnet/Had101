@@ -37,7 +37,12 @@ In this lesson, we'll learn a little about Hadoop, why it exists, and how it rel
 
 ### 2. Everyone Do: Unix File System (0:10)
 
-* Take a few moments to preview this activity.  Have students crack open the DEMO1 file and follow along.
+* Take a few moments to preview this activity, explaining that if they are already super-comfortable using Unix commands, they can check out the more advanced labs on Permissions and Cron Jobs.
+
+[Lab 1: Basic Navigation](/Activities/UnixFileSystem/Lab1BasicNavigation.md)
+[Lab 2: File Manipulation](/Activities/UnixFileSystem/Lab2FileManipulation.md)
+[Lab 1: Permissions](/Activities/UnixFileSystem/Lab3Permissions.md)
+[Lab 1: Cron Jobs](/Activities/UnixFileSystem/Lab4CronJobs.md)
   
 * Answer any remaining questions before proceeding to the next section.
 
