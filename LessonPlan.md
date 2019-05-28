@@ -110,7 +110,10 @@ Hadoop is a distributed data and processing system.
 By itself, it's quite a primitive software solution that allows you to create cohesive clusters of data and processing nodes. Hadoop is not a NoSQL database, but some of the NoSQL solutions may use Hadoop to implement their solution. 
 HBase, based on Hadoop, is a columnar store that is Partition Tolerant and Consistent (giving up Availability). 
 
-Hadoop as a File System
+## Hadoop as a File System
+Instructor: Poll your students to see how many of them feel super-confident moving files around using Unix commands. If more than half of them say they are confident, skip this section and go right to the HDFS labs, where you'll use Unix-like commands to move files around within the Hadoop file system.
+
+In this Optional lab, we'll learn the basics of moving around the system. Many tasks rely on being able to get to, or reference the correct location in the system. As such, this stuff really forms the foundation of being able to work effectively in Linux. Make sure you understand it well. The output of the commands in this lab may be different, depending on the system you are executing them. 
 
 Reading, Copying, Moving Files Inside HDFS
 
