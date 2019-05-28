@@ -35,18 +35,29 @@ In this lesson, we'll learn a little about Hadoop, why it exists, and how it rel
 
 [Instructions on setting up Horton VM](/Activities/Setup/SetupHortonVM.md)
 
-### 2. Everyone Do: Unix File System (0:10)
+### 2. Everyone Do: Unix File System (0:05)
 
-* Take a few moments to preview this activity, explaining that if they are already super-comfortable using Unix commands, they can check out the more advanced labs on Permissions and Cron Jobs.
+* Take a few moments to preview this activity, explaining that if they are already super-comfortable using Unix commands, they can check out the more advanced labs on Permissions and Cron Jobs. Students should only spend a few minutes on this section.
 
-[Lab 1: Basic Navigation](/Activities/UnixFileSystem/Lab1BasicNavigation.md)
-[Lab 2: File Manipulation](/Activities/UnixFileSystem/Lab2FileManipulation.md)
-[Lab 1: Permissions](/Activities/UnixFileSystem/Lab3Permissions.md)
-[Lab 1: Cron Jobs](/Activities/UnixFileSystem/Lab4CronJobs.md)
+* [Lab 1: Basic Navigation](/Activities/UnixFileSystem/Lab1BasicNavigation.md)
+* [Lab 2: File Manipulation](/Activities/UnixFileSystem/Lab2FileManipulation.md)
+* [Lab 3: Permissions](/Activities/UnixFileSystem/Lab3Permissions.md)
+* [Lab 4: Cron Jobs](/Activities/UnixFileSystem/Lab4CronJobs.md)
   
 * Answer any remaining questions before proceeding to the next section.
 
-### 3. Instructor  Do: Understanding Map / Reduce   (0:10)
+### 3. Instructor Do: Introducing Hadoop   (0:05)
+
+Overview of Hadoop
+Hadoop as a File System
+Reading, Copyingf, Moving Files Inside HDFS
+
+### 4. Students Do: Hadoop Labs   (0:05)
+
+* [Lab 1: Hadoop Commands](/Activities/Hadoop/LabHadoopCommands.md)
+* [Cheatsheet: Hadoop HDFS Commands](/Activities/Hadoop/hadoop-hdfs-commands-cheatsheet
+
+### 4. Instructor Do: Understanding Map / Reduce   (0:10)
 
 We've seen how Hadoop stores data on multiple machines. We want to be able to process the data using the computational power of the machines that we use to store the data. How can we do that?
 
