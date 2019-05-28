@@ -25,7 +25,7 @@ In this lesson, we'll learn a little about Hadoop, why it exists, and how it rel
 * To gain familiarity with HDFS file commands.
 * To write a simple Mapper and Reducer in Java
 * If time permits, you'll also run a map reduce jobs using Hive and Pig
-* - - -
+- - -
 
 ### 0. Instructor Do: Welcome Students (0:01)
 
@@ -78,7 +78,8 @@ Many large companies in the FinTech space have run into this problem and we ofte
 
 It is this realization that help realize our need for other database technologies where we embrace partition tolerance but sacrifice some of the other guarantees. Here are an example of two such databases: 
 
-Cassandra (Partition Tolerant, Available, but sacrifices Consistency) HBase (Partition Tolerant, Consistent, but sacrifices Availability) 
+Cassandra (Partition Tolerant, Available, but sacrifices Consistency) HBase (Partition Tolerant, Consistent, but sacrifices Availability).
+
 In the big data world, we need to partition the data to handle the larger data.
 
 ## Enter NoSQL Databases
@@ -86,23 +87,31 @@ To be able to handle the partition tolerance in large data sets, various new dat
 
 So, if databases are not relational, what are they? 
 
-Probably the most commonly discussed types used for storing Big Data are: 
+Probably the most commonly discussed types used for storing Big Data are as follows: 
 
 Type | Examples 
 ------------|----------
-|Key Value Store | Riak, Redis, Aerospike, Voldemort, MemcacheDB, etc. 
-|Columnar Store | HBase, Cassandra, DyamoDB, Bigtable, Druid, Hypertable, etc. 
-|Document Store | MongoDB, CouchDB, Couchbase, BaseX, etc. 
+|Key Value Store | Riak, Redis, Aerospike, Voldemort, MemcacheDB
+|Columnar Store | HBase, Cassandra, DyamoDB, Bigtable, Druid, Hypertable
+|Document Store | MongoDB, CouchDB, Couchbase, BaseX
 
-* Key-Value store 
-Perhaps the simplest of the databases Typically, the users can store and retrieve data based on some key stored in lexicographical order There is no structure in the data (no relationship), so partitioning is relatively easy, e.g., we can assign a range of keys to individual machines. 
-* Columnar Store 
-The columnar store at first glance may look a lot like a relational database (it has tables and columns), but as you start using them, you'll quickly discover the differences Columnar store has no concepts of relationships A columnar store typically supports what's called wide-columns, that is they can store a very large number of columns and each row can have a different number of columns. Because the columnar store doesn't support relationship, the rows can typically easily be partitioned across multiple machines.
-* Document Store 
-A document store can store complex data called documents. Often the documents can be of an arbitrary shape (although, strict schema definitions are possible) The structure of the document is similar to an XML/YAML/JSON/BSON The documents may have pointers to other documents, but there are no enforced relationships making each document it's own 'island' and partitioning is relatively trivial here also.
+* Key-Value store:
+Simplest. Typically, the users can store and retrieve data based on some key stored in lexicographical order There is no structure in the data (no relationship), so partitioning is relatively easy, e.g., we can assign a range of keys to individual machines. 
+* Columnar Store:
+May look a lot like a relational database (it has tables and columns), but the Columnar store has no concepts of relationships. A columnar store typically supports what's called wide-columns, that is they can store a very large number of columns and each row can have a different number of columns. Because the columnar store doesn't support relationship, the rows can typically easily be partitioned across multiple machines.
+* Document Store:
+A document store can store complex data called documents. Often the documents can be of an arbitrary shape (although, strict schema definitions are possible). The structure of the document is similar to an XML/YAML/JSON/BSON. The documents may have pointers to other documents, but there are no enforced relationships making each document its own 'island'. Partitioning is relatively trivial here also.
 
+## Hadoop 
+Where does Hadoop fit into the Big Data space and how is it related to NoSQL stores? 
+
+Hadoop is a distributed data and processing system. 
+
+By itself, it's quite a primitive software solution that allows you to create cohesive clusters of data and processing nodes. Hadoop is not a NoSQL database, but some of the NoSQL solutions may use Hadoop to implement their solution. 
+HBase, based on Hadoop, is a columnar store that is Partition Tolerant and Consistent (giving up Availability). 
 
 Hadoop as a File System
+
 Reading, Copying, Moving Files Inside HDFS
 
 ### 4. Students Do: Hadoop Labs   (0:05)
