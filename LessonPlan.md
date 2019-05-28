@@ -48,7 +48,60 @@ In this lesson, we'll learn a little about Hadoop, why it exists, and how it rel
 
 ### 3. Instructor Do: Introducing Hadoop   (0:05)
 
-Overview of Hadoop
+## Overview of Hadoop
+
+Many of you have probably worked on large databases before and probably traditional databases such as Relational Databases.
+
+This approach has some limitations. For instance, a single database is limited to what you can place on a single machine. In the big data space, this is often much more than what Oracle can handle (they may be able to store the data, but often have severe problems processing such data). 
+
+So, when is data big? 
+Clearly a Megabyte (MB) is not big, right? How about a Terabyte (TB), is a TB big? Today you can buy a TB of storage for less than $100, so TBs are not that impressive anymore. How about Petabyte (PB)? A PB is 1,000 TB. That would mean 1,000 TB drives. You can buy harddrives that holds 8 TB today for less than $300. That means, we could buy a PT of storage for less than $40,000. Clearly that is in range. We would have to buy 125 disks and perhaps with data redundancy as much as twice that. Today, some companies are talking about Exabytes of data. One Exabyte is 1,000 PB. This may still be achievable, but clearly BIG. There are also those that are talking about the next level up, Zetabytes. A Zetabyte (you guessed it) is 1,000 Exabytes. To illustrate how big that is, using current technologies to build out an 1 Exabyte drive, that drive would be as big as Antarctica (or as large as the US and Mexico combined).
+
+I hope you agree that the idea of building a hard disk as large as Antarctica is a bad idea. Although, we are pretty certain the data density will improve over time (the data storage is getting denser and denser), at least in the near future, we have to find ways to partition the data across multiple drives. This often also means that we want to store the data on multiple machines. This fragmentation of data we call partitions. 
+
+Another reason to store data across multiple machines is to scale up computation. We really don't have much of an option. If we have say 1000 disks, we may want to have 1000 CPU's working over those disks as well. Now we can process 1000 different things in parallel! 
+
+When we partition the data, run into another problem. This problem was described by Eric Brewer (A professor at UC Berkeley and vice-president of infrastructure at Google). 
+
+This theorem, called Brewer's Theorem or CAP theorem states that when we partition the data, we will have to compromise either Availability or Consistency. We'll look at the CAP theorem next. 
+
+The CAP Theorem states that it is impossible to simultaneously provide more than two of these three guarantees: 
+Consistency Availability Partition tolerance 
+
+Here is a good video illustrating the CAP theorem and discussing the proof: 
+
+https://www.youtube.com/watch?v=Jw1iFr4v58M
+
+The main reason for discussing the CAP theorem here is that our traditional RDBMS system gives up partition tolerance to achieve both consistency and availability. What is important to take with you from the video is that IF scalability is a major concern, you can never sacrifice P(artition-tolerance).
+
+Many large companies in the FinTech space have run into this problem and we often then have to rely on some form of sharding of the databases. However, the sharding means that we have to implement quite a bit of code to either achieve consistency or availability.
+
+It is this realization that help realize our need for other database technologies where we embrace partition tolerance but sacrifice some of the other guarantees. Here are an example of two such databases: 
+
+Cassandra (Partition Tolerant, Available, but sacrifices Consistency) HBase (Partition Tolerant, Consistent, but sacrifices Availability) 
+In the big data world, we need to partition the data to handle the larger data.
+
+## Enter NoSQL Databases
+To be able to handle the partition tolerance in large data sets, various new database types have emerged and often grouped under the name NoSQL databases. There are some disagreement of what NoSQL stands for (it was a tag used to promote a conference on Twitter), but let's just say it stands for Not Only SQL or perhaps it should be, databases that are not relational.
+
+So, if databases are not relational, what are they? 
+
+Probably the most commonly discussed types used for storing Big Data are: 
+
+Type | Examples 
+------------|----------
+|Key Value Store | Riak, Redis, Aerospike, Voldemort, MemcacheDB, etc. 
+|Columnar Store | HBase, Cassandra, DyamoDB, Bigtable, Druid, Hypertable, etc. 
+|Document Store | MongoDB, CouchDB, Couchbase, BaseX, etc. 
+
+* Key-Value store 
+Perhaps the simplest of the databases Typically, the users can store and retrieve data based on some key stored in lexicographical order There is no structure in the data (no relationship), so partitioning is relatively easy, e.g., we can assign a range of keys to individual machines. 
+* Columnar Store 
+The columnar store at first glance may look a lot like a relational database (it has tables and columns), but as you start using them, you'll quickly discover the differences Columnar store has no concepts of relationships A columnar store typically supports what's called wide-columns, that is they can store a very large number of columns and each row can have a different number of columns. Because the columnar store doesn't support relationship, the rows can typically easily be partitioned across multiple machines.
+* Document Store 
+A document store can store complex data called documents. Often the documents can be of an arbitrary shape (although, strict schema definitions are possible) The structure of the document is similar to an XML/YAML/JSON/BSON The documents may have pointers to other documents, but there are no enforced relationships making each document it's own 'island' and partitioning is relatively trivial here also.
+
+
 Hadoop as a File System
 Reading, Copying, Moving Files Inside HDFS
 
