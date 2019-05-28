@@ -124,7 +124,7 @@ Reading, Copying, Moving Files Inside HDFS
 
 ### 4. Instructor Do: Understanding Map / Reduce   (0:10)
 
-We've seen how Hadoop stores data on multiple machines. We want to be able to process the data using the computational power of the machines that we use to store the data. How can we do that?
+Given the way Hadoop stores data on multiple machines, we want to be able to process the data using the computational power of the machines that we use to store the data. How can we do that?
 
 To take advantage of a distributed cluster of computational nodes, we need to come up with algorithms that allows us to run things in parallel. Also, we would want to make sure that we delegate the processing to the node that actually have the data if possible.
 
@@ -132,35 +132,34 @@ There is a saying in Big Data:
 
 > Don't send a terabyte to the algorithms, send the algorithms to the terabyte!
 
-MapReduce is a programming model supported by Hadoop. The programming model allows us to process massive data sets in parallel. Hadoop supports the orchestration of a MapReduce program where the program containing the MapReduce job (containing something we'll learn to know under the name _**Mappers**_ and **_Reducers_**) as well as some orchestration of what order to run the mappers and reducers.
+MapReduce is a programming model which allows us to process massive data sets in parallel. 
 
 ![Map Reduce](/Images/Map_Reduce.png)
 
-The algorithm works as follows:
+The algorithm works like this:
 
-1.  Map Phase: The data is converted into a set of Key-Value pairs. Hadoop ensures that the mapper is running on the machine where the data is. A key thing about the mapper is that it can run in parallel with other mappers. That is, if the data that is processed is processed across multiple machines, the mappers caHere we come to one of the great things about Hadoop, in addition to the distributed storage, we also have a mechanism to send a program to each of the machines in our cluster. That is, we can send data around (this is called shuffling) AND we can send programs to the nodes.
+1.  Map Phase: The data is converted into a set of Key-Value pairs. Hadoop ensures that the mapper is running on the machine where the data is. The mapper can run in parallel with other mappers. If the data is processed across multiple machines, the mappers can run in total isolation.
 
-The problem we now need to solve is, what kind of algorithms can we send to the nodes that works in parallel and that distributes well. This is an area of computer science that have been deeply explored by the functional programming community and Hadoop decided to combine two of common rfun in total isolation.**
-
-2.  Shuffle Phase: This phase is performed by Hadoop and as a programmer, you're not directly involved. However, it is important to understand this phase as well. What Hadoop will do is to redistribute the key-value pairs you created from the map phase such that all key-value pairs with the same key is sent to the same machine in the cluster.
+2.  Shuffle Phase: Hadoop redistributes the key-value pairs you created from the map phase such that all key-value pairs with the same key is sent to the same machine in the cluster. Good news: Hadoop does this without any help from your programming!
 
 3.  Reduce Phase: In this phase, we get to see all the key-value pairs and we can apply some algorithm to combine the set of values.
 
-Next, we'll write a Mapper, the first half of this mechanism.
+Next, we'll review a Mapper, the first half of this mechanism.
 
-### 4.  Do: Review Mapper (0:10)
+### 4.  Students Do: Review Mapper and Reducer(0:10)
 
+[Download:](/Activities/MapReduce/mapreducejava_690976.zip)
+Unzip this file and you should have all the files you need to complete this lab.
 
-### 5. Instructor Do: Review Reducer (0:15)
+In this lab, you will run a MapReduce application using the Hadoop Java API. The "Hello World" of MapReduce is traditionally a word count program. You will perform a word count on the text of A Tale of Two Cities.
 
+* [Lab 1: Review Mapper](/Activities/MapReduce/Lab1Mapper.md)
+* [Lab 2: Review Reducer](/Activities/MapReduce/Lab2Reducer.md)
 
-### 7. EveryoneStudents Do: Run Map / Reduce Job   (0:05)
+### 7. Students Do: Run Map / Reduce Job   (0:05)
 
 * Now task students with running their own Map / Reduce jobs. Slack out the following:
-
-* **File:**
-
-* **Instructions:**
+* [Lab 3: Run and review output](/Activities/MapReduce/Lab3PutTogetherAndRun.md)
 
 ### 8. Instructor Do: Demo2 - Run Word Count in Hive
 
