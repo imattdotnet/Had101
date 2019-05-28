@@ -104,19 +104,12 @@ To understand how this shorthand method works we first need a little background 
 **Octal** | **Binary**
 ----------------|----------------
 **0** | 0 0 0
-
 **1** | 0 0 1
-
 **2** | 0 1 0
-
 **3** | 0 1 1
-
 **4** | 1 0 0
-
 **5** | 1 0 1
-
 **6** | 1 1 0
-
 **7** | 1 1 1
 
 Now the interesting point to note is that we may represent all 8 octal values with 3 binary bits and that every possible combination of 1 and 0 is included in it. So we have 3 bits and we also have 3 permissions. If you think of 1 as representing on and 0 as off then a single octal number may be used to represent a set of permissions for a set of people. Three numbers and we can specify permissions for the user, group and others. Let's see some examples. (refer to the table above to see how they match)
