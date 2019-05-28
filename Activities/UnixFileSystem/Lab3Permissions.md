@@ -101,41 +101,23 @@ The method outlined above is not too hard for setting permissions but it can be 
 
 To understand how this shorthand method works we first need a little background in number systems. Our typical number system is decimal. It is a base 10 number system and as such has 10 symbols (0 - 9) used. Another number system is octal which is base 8 (0-7). Now it just so happens that with 3 permissions and each being on or off, we have 8 possible combinations (2^3). Now we can also represent our numbers using binary which only has 2 symbols (0 and 1). The mapping of octal to binary is in the table below.
 
-**Octal**
+**Octal** | **Binary**
+----------------|----------------
+**0** | 0 0 0
 
-**Binary**
+**1** | 0 0 1
 
-**0**
+**2** | 0 1 0
 
-0 0 0
+**3** | 0 1 1
 
-**1**
+**4** | 1 0 0
 
-0 0 1
+**5** | 1 0 1
 
-**2**
+**6** | 1 1 0
 
-0 1 0
-
-**3**
-
-0 1 1
-
-**4**
-
-1 0 0
-
-**5**
-
-1 0 1
-
-**6**
-
-1 1 0
-
-**7**
-
-1 1 1
+**7** | 1 1 1
 
 Now the interesting point to note is that we may represent all 8 octal values with 3 binary bits and that every possible combination of 1 and 0 is included in it. So we have 3 bits and we also have 3 permissions. If you think of 1 as representing on and 0 as off then a single octal number may be used to represent a set of permissions for a set of people. Three numbers and we can specify permissions for the user, group and others. Let's see some examples. (refer to the table above to see how they match)
 
