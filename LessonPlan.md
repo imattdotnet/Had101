@@ -46,7 +46,7 @@ In this lesson, we'll learn a little about Hadoop, why it exists, and how it rel
   
 * Answer any remaining questions before proceeding to the next section.
 
-## 3. Instructor Do: Introducing Hadoop   (0:05)
+## 3. Instructor Do: Introducing Hadoop   (0:10)
 
 ### Overview of Hadoop
 
@@ -161,11 +161,10 @@ In this lab, you will run a MapReduce application using the Hadoop Java API. The
 * Now task students with running their own Map / Reduce jobs. Slack out the following:
 * [Lab 3: Run and review output](/Activities/MapReduce/Lab3PutTogetherAndRun.md)
 
-### 8. Instructor Do: Demo2 - Run Word Count in Hive
+### 8. Instructor Do: Demo2 - Run Word Count in Hive (0:05)
 
 * If time permits, run Demo2 by submitting the Hive command, showing results.
 
 * [Lab 1: WordCount](/Activities/Hive/Lab1WordCount.md)
 * [Advanced Hive Labs](/Activities/Hive/AdvancedLabs1_4.md)
-
 
