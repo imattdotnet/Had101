@@ -50,12 +50,12 @@ In this lesson, we'll learn a little about Hadoop, why it exists, and how it rel
 
 Overview of Hadoop
 Hadoop as a File System
-Reading, Copyingf, Moving Files Inside HDFS
+Reading, Copying, Moving Files Inside HDFS
 
 ### 4. Students Do: Hadoop Labs   (0:05)
 
 * [Lab 1: Hadoop Commands](/Activities/Hadoop/LabHadoopCommands.md)
-* [Cheatsheet: Hadoop HDFS Commands](/Activities/Hadoop/hadoop-hdfs-commands-cheatsheet
+* [Cheatsheet: Hadoop HDFS Commands](/Activities/Hadoop/hdfs-cheatsheet.pdf)
 
 ### 4. Instructor Do: Understanding Map / Reduce   (0:10)
 
