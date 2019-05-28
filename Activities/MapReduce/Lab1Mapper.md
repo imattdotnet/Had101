@@ -39,5 +39,5 @@ public static class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
             context.write(word, one);
         }
     }
-}
+
 The Map class extends Mapper which is part of the Hadoop API. Within the angle brackets are the data types for the input key and value and the emitted key and value. You then are required to override a method called map that performs the actual work of the mapper function.
