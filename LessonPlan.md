@@ -161,10 +161,15 @@ In this lab, you will run a MapReduce application using the Hadoop Java API. The
 * Now task students with running their own Map / Reduce jobs. Slack out the following:
 * [Lab 3: Run and review output](/Activities/MapReduce/Lab3PutTogetherAndRun.md)
 
-### 8. Instructor Do: Demo2 - Run Word Count in Hive (0:05)
+### 8. Instructor Do: Run Word Count in Hive (0:05)
 
 * If time permits, run Demo2 by submitting the Hive command, showing results.
+* [Lab 1: WordCount](/Activities/Hive/Lab1WordCount.md)
 
+### 9. Students Do: Hive and Pig   (0:10)
+
+* Time for students to get a taste of pig and hive. Slack out the following:
 * [Lab 1: WordCount](/Activities/Hive/Lab1WordCount.md)
 * [Advanced Hive Labs](/Activities/Hive/AdvancedLabs1_4.md)
-
+* [Lab 1: HelloWorld](/Activities/Pig/Lab1HelloWorld.md)
+* [Advanced Pig Labs](/Activities/Pig/AdvancedPigLabs.md)
