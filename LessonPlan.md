@@ -27,15 +27,15 @@ In this lesson, we'll learn a little about Hadoop, why it exists, and how it rel
 * If time permits, you'll also run a map reduce jobs using Hive and Pig
 - - -
 
-### 0. Instructor Do: Welcome Students (0:01)
+## 0. Instructor Do: Welcome Students (0:01)
 
 * Take the first few minutes of class to welcome students back to class. Give them a heads-up that today's class will move them one step closer to one of the hottest areas in computing.
 
-### 1. Students Do: Setup   (0:10)
+## 1. Students Do: Setup   (0:10)
 
 [Instructions on setting up Horton VM](/Activities/Setup/SetupHortonVM.md)
 
-### 2. Everyone Do: Unix File System (0:05)
+## 2. Everyone Do: Unix File System (0:05)
 
 * Take a few moments to preview this activity, explaining that if they are already super-comfortable using Unix commands, they can check out the more advanced labs on Permissions and Cron Jobs. Students should only spend a few minutes on this section.
 
@@ -46,9 +46,9 @@ In this lesson, we'll learn a little about Hadoop, why it exists, and how it rel
   
 * Answer any remaining questions before proceeding to the next section.
 
-### 3. Instructor Do: Introducing Hadoop   (0:05)
+## 3. Instructor Do: Introducing Hadoop   (0:05)
 
-## Overview of Hadoop
+### Overview of Hadoop
 
 Many of you have probably worked on large databases before and probably traditional databases such as Relational Databases.
 
@@ -72,7 +72,7 @@ Here is a good video illustrating the CAP theorem and discussing the proof:
 
 https://www.youtube.com/watch?v=Jw1iFr4v58M
 
-The main reason for discussing the CAP theorem here is that our traditional RDBMS system gives up partition tolerance to achieve both consistency and availability. What is important to take with you from the video is that IF scalability is a major concern, you can never sacrifice P(artition-tolerance).
+What is important to take with you from the video is that IF scalability is a major concern, you can never sacrifice P(artition-tolerance).
 
 Many large companies in the FinTech space have run into this problem and we often then have to rely on some form of sharding of the databases. However, the sharding means that we have to implement quite a bit of code to either achieve consistency or availability.
 
@@ -82,7 +82,7 @@ Cassandra (Partition Tolerant, Available, but sacrifices Consistency) HBase (Par
 
 In the big data world, we need to partition the data to handle the larger data.
 
-## Enter NoSQL Databases
+### Enter NoSQL Databases
 To be able to handle the partition tolerance in large data sets, various new database types have emerged and often grouped under the name NoSQL databases. There are some disagreement of what NoSQL stands for (it was a tag used to promote a conference on Twitter), but let's just say it stands for Not Only SQL or perhaps it should be, databases that are not relational.
 
 So, if databases are not relational, what are they? 
@@ -102,7 +102,7 @@ May look a lot like a relational database (it has tables and columns), but the C
 * Document Store:
 A document store can store complex data called documents. Often the documents can be of an arbitrary shape (although, strict schema definitions are possible). The structure of the document is similar to an XML/YAML/JSON/BSON. The documents may have pointers to other documents, but there are no enforced relationships making each document its own 'island'. Partitioning is relatively trivial here also.
 
-## Hadoop 
+### Hadoop 
 Where does Hadoop fit into the Big Data space and how is it related to NoSQL stores? 
 
 Hadoop is a distributed data and processing system. 
@@ -110,19 +110,19 @@ Hadoop is a distributed data and processing system.
 By itself, it's quite a primitive software solution that allows you to create cohesive clusters of data and processing nodes. Hadoop is not a NoSQL database, but some of the NoSQL solutions may use Hadoop to implement their solution. 
 HBase, based on Hadoop, is a columnar store that is Partition Tolerant and Consistent (giving up Availability). 
 
-## Hadoop as a File System
+### Hadoop as a File System
 Instructor: Poll your students to see how many of them feel super-confident moving files around using Unix commands. If more than half of them say they are confident, skip this section and go right to the HDFS labs, where you'll use Unix-like commands to move files around within the Hadoop file system.
 
 In this Optional lab, we'll learn the basics of moving around the system. Many tasks rely on being able to get to, or reference the correct location in the system. As such, this stuff really forms the foundation of being able to work effectively in Linux. Make sure you understand it well. The output of the commands in this lab may be different, depending on the system you are executing them. 
 
 Reading, Copying, Moving Files Inside HDFS
 
-### 4. Students Do: Hadoop Labs   (0:05)
+## 4. Students Do: Hadoop Labs   (0:05)
 
 * [Lab 1: Hadoop Commands](/Activities/Hadoop/LabHadoopCommands.md)
 * [Cheatsheet: Hadoop HDFS Commands](/Activities/Hadoop/hdfs-cheatsheet.pdf)
 
-### 4. Instructor Do: Understanding Map / Reduce   (0:10)
+## 5. Instructor Do: Understanding Map / Reduce   (0:10)
 
 Given the way Hadoop stores data on multiple machines, we want to be able to process the data using the computational power of the machines that we use to store the data. How can we do that?
 
@@ -146,7 +146,7 @@ The algorithm works like this:
 
 Next, we'll review a Mapper, the first half of this mechanism.
 
-### 4.  Students Do: Review Mapper and Reducer(0:10)
+### 6.  Students Do: Review Mapper and Reducer(0:10)
 
 [Download:](/Activities/MapReduce/mapreducejava_690976.zip)
 Unzip this file and you should have all the files you need to complete this lab.
@@ -164,5 +164,8 @@ In this lab, you will run a MapReduce application using the Hadoop Java API. The
 ### 8. Instructor Do: Demo2 - Run Word Count in Hive
 
 * If time permits, run Demo2 by submitting the Hive command, showing results.
+
+* [Lab 1: WordCount](/Activities/Hive/Lab1WordCount.md)
+* [Advanced Hive Labs](/Activities/Hive/AdvancedLabs1_4.md)
 
 
